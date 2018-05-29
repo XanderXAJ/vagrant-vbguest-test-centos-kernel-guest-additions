@@ -2,7 +2,7 @@
 
 This repo contains a `Vagrantfile` that makes it possible to reproduce an issue where the Virtualbox Guest Additions are not installed correctly when using CentOS.
 
-The reason, [as described in the original issue][original-issue], is because CentOS will regularly remove old kernel releases from their repositories, but not update the Vagrant base box when this happens.  This means it is possible to end up in a state where the latest base box has an out of date kernel, and thanks to the old kernels no longer existing in the repos, it is impossible to install a version the kernel headers, needed to compile the Guest Additions, that matches the running kernel.
+The reason, [as described in the original issue][original-issue], is because CentOS will regularly remove old kernel releases from their repositories, but not update the Vagrant base box when this happens.  This means it is possible to end up in a state where the latest base box has an out of date kernel, and thanks to the old kernels no longer existing in the repos, it is impossible to install a version of the kernel headers, needed to compile the Guest Additions, that matches the running kernel.
 
 The theoretical fix is to install the latest kernel in addition to the kernel headers, thereby working around the lack of old kernel headers in the repositories.  Adding this as an option would both allow CentOS users and other Linux OS users to upgrade their kernel if they desire.
 
