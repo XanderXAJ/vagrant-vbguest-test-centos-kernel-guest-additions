@@ -23,13 +23,33 @@ The theoretical fix is to install the latest kernel in addition to the kernel he
     cd vagrant-vbguest
     ```
 
-3.  Set the `VAGRANT_CWD` environment variable to point to the test repo; this tells Vagrant will `Vagrantfile` to use:
+3.  Install the required dependencies:
+
+    ```
+    bundle install --path .bundle
+    ```
+
+    A local path is used to avoid the need for root/administrator permissions.  `bundle` keeps a note of this path in `.bundle/config`.
+
+4.  Check the development version of Vagrant is being run:
+
+    ```
+    bundle exec vagrant
+    ```
+
+    If the correct version is running, you will get a message beginning with:
+
+    ```
+    You appear to be running Vagrant outside of the official installers.
+    ```
+
+5.  Set the `VAGRANT_CWD` environment variable to point to the test repo; this tells Vagrant will `Vagrantfile` to use:
 
     ```
     export VAGRANT_CWD=../vagrant-vbguest-test-centos-kernel-guest-additions
     ```
 
-4.  [Follow the instructions in the `vagrant-vbguest` README][vbguest] to test and develop a fix.
+6.  [Follow the instructions in the `vagrant-vbguest` README][vbguest] to test and develop a fix.
 
     In this case, simply starting the box will show whether the Guest Additions have installed correctly:
 
@@ -37,7 +57,7 @@ The theoretical fix is to install the latest kernel in addition to the kernel he
     bundle exec vagrant up
     ```
 
-    If you see the following message, the Guest Additions *are broken*:
+    If you see the following message (towards the end of the output), the Guest Additions *are broken*:
 
     ```
     ==> default: Checking for guest additions in VM...
